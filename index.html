@@ -32,6 +32,7 @@
         
         //Initializing Firebase 
         firebaseLoop();
+        petUpdate();//myPetUpdate();
 
         //Changing a value in firebase
         messageListRef.on('child_changed', function(snapshot) {
@@ -67,6 +68,36 @@
           });
         });
         }
+
+        //
+        function petUpdate() {
+          var messageListRef = new Firebase('https://yhackdayusa.firebaseio.com');
+          messageListRef.on('value', function(updateSnapshot) {
+            var updateVal = updateSnapshot.val();
+            var valueToSend = updateVal[0].update;
+            $('#messagesDiv').val($('#messagesDiv').val() + valueToSend);
+          });
+        }
+
+
+        function myPetUpdate(){
+            var myDataRef = new Firebase('https://yhackdayusa.firebaseio.com');
+            $('#messageInput').keypress(function (e) {
+                if (e.keyCode == 13) {
+                  var text = $('#messageInput').val();
+                  myDataRef.push({text: text});
+                  $('#messageInput').val('');
+                }
+              });
+              myDataRef.on('child_added', function(snapshot) {
+                var message = snapshot.val();
+                displayChatMessage(message.text);
+              });
+              function displayChatMessage(text) {
+                $('<div/>').text(text).appendTo($('#messagesDiv'));
+                $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+              };
+        }
         
         infowindow = new google.maps.InfoWindow({
                 content: "loading..."
@@ -78,16 +109,19 @@
 <body>
 <div class="pure-g-r" id="layout">
     <div class="sidebar pure-u">
-        <header class="header">
+        <header class="header" style="margin: 25% 2em 0; !important">
             <hgroup>
-                <h1 class="brand-title">Pet World</h1>
-                <h2 class="brand-tagline">An AR World for Objects</h2>
+                <h1 class="brand-title">Virtual Pet World</h1>
+                <h2 class="brand-tagline">An AR World for Pets</h2>
             </hgroup>
-
-            <nav class="nav">Technologies/Tools Used
+            <br/> <br/> <br/><br/><br/>
+             <form class="pure-form pure-form-stacked">
+                    <legend style="color:#8E8ED6">Technologies/Tools Used</legend>
+                </form>
+            <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                      <a class="pure-button" href="http://purecss.io/">Yahoo ! Pure CSS Modules</a>
+                      <a class="pure-button-primary pure-button" href="http://purecss.io/">Yahoo ! Pure CSS Modules</a>
                     </li>
                     <li class="nav-item">
                         <a class="pure-button" href="https://www.firebase.com/">Firebase Forge</a>
@@ -100,29 +134,37 @@
                     </li>
                 </ul>
             </nav>
+            <br/> <br/> <br/><br/><br/>
+
+            <p class="post-meta" style="padding-left: 15px; ">
+                            By Sreejumon, Pooran, <!--a href="https://twitter.com/vasujain"-->Vasu<!--/a-->
+            </p>
         </header>
     </div>
 
     <div class="pure-u-1">
             <header class="post-header">
-                        <h2 class="post-title" style="padding-left: 15px;">Pet World Augmented Reality</h2>
-                        <p class="post-meta" style="padding-left: 15px;">
-                            By Sreejumon, Pooran, Vasu 
-                        </p>
-                        <br/>
+                <form class="pure-form pure-form-stacked" style="padding-left: 15px; padding-right: 10px">
+                    <fieldset>
+                        <legend style="color:#8E8ED6">Pet World Updates</legend>
+                        <input type="text" class="pure-input-1" placeholder="Pet World Updates" id='messagesDiv'>
+                    </fieldset>
+                </form>
+                    <!--div id='messagesDiv' style="padding-top:15px"></div>
+                    <input type='text' id='messageInput' placeholder='Message' style="padding-left: 15px; padding-right: 10px"-->
                     </header>
 
             <!--Maps code -->
-            <div id="map-canvas" style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden; -webkit-transform: translateZ(0);width: 100%;height: 600px;"></div>
+            <div id="map-canvas" style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden; -webkit-transform: translateZ(0);width: 100%;height: 625px;"></div>
             <!--Maps code end-->
 
             <footer class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">
-                    <ul>
+                    <!--ul>
                         <li><a href="http://purecss.io/">About</a></li>
                         <li><a href="https://yhackday.firebaseio.com/">Firebase</a></li>
                         <li><a href="https://github.com/yhackday">Github</a></li>
-                    </ul>
+                    </ul-->
                 </div>
             </footer>
         </div>
