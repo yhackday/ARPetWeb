@@ -29,12 +29,24 @@
         //Firebase API Calls
 
         var messageListRef = new Firebase('https://yhackday.firebaseio.com');
-        messageListRef.once('value', function(allMessagesSnapshot) {
+        
+        //Initializing Firebase 
+        firebaseLoop();
+
+        //Changing a value in firebase
+        messageListRef.on('child_changed', function(snapshot) {
+          firebaseLoop();
+        });
+
+        //Looping into firebase
+        function firebaseLoop() {
+          var messageListRef = new Firebase('https://yhackday.firebaseio.com');
+          messageListRef.once('value', function(allMessagesSnapshot) {
           allMessagesSnapshot.forEach(function(messageSnapshot) {
             // Will be called with a messageSnapshot for each message under message_list.
             var latitude = messageSnapshot.child('latitude').val();
             var longitude = messageSnapshot.child('longitude').val();
-            var webMarkerImage = messageSnapshot.child('sourceweb').val();
+            var webMarkerImage = messageSnapshot.child('sourceweb').val()+"?ix=0";
             var siteLatLng = new google.maps.LatLng(latitude, longitude);
             var marker = new google.maps.Marker({
                 position: siteLatLng,
@@ -52,10 +64,10 @@
                 infowindow.setContent(this.html);
                 infowindow.open(map, this);
             });
-
-
           });
         });
+        }
+        
         infowindow = new google.maps.InfoWindow({
                 content: "loading..."
         });
@@ -75,10 +87,10 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="pure-button" href="http://purecss.io">Pure</a>
+                        <a class="pure-button" href="http://purecss.io">Change Mood</a>
                     </li>
                     <li class="nav-item">
-                        <a class="pure-button" href="http://yuilibrary.com">YUI Library</a>
+                        <a class="pure-button" href="http://yuilibrary.com">Event on Object</a>
                     </li>
                 </ul>
             </nav>
