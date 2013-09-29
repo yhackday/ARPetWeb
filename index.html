@@ -32,7 +32,7 @@
         
         //Initializing Firebase 
         firebaseLoop();
-        //petUpdate();
+        petUpdate();
         //myPetUpdate();
 
         //Changing a value in firebase
@@ -71,16 +71,18 @@
         });
         }
 
-        /*
+        
         function petUpdate() {
-          var messageListRef = new Firebase('https://yhackdayusa.firebaseio.com');
-          messageListRef.on('value', function(updateSnapshot) {
-            var updateVal = updateSnapshot.val();
-            var valueToSend = updateVal[0].update;
-            $('#messagesDiv').val($('#messagesDiv').val() + valueToSend);
-          });
+           var f3 = new Firebase("https://yhackdayusa.firebaseio.com");
+            f3.on("value", function (snap) {
+                var id = snap.val();
+                if (id != null) {
+                    $('#messagesDiv').val($('#messagesDiv').val() + id.status.status);
+                }
+            });
         }
 
+        /*
         function Fetch(id) {
             var f = new Firebase('https://yhackdayusa.firebaseio.com');
             f.on("value", function (snap) {
@@ -102,7 +104,20 @@
                 }
             });
 
-        }*/
+        }
+
+        function getNotification() {
+            var f3 = new Firebase("https://yhackdayusa.firebaseio.com");
+            f3.on("value", function (snap) {
+                var id = snap.val();
+                if (id != null) {
+                    $('#messagesDiv').val($('#messagesDiv').val() + valueToSend);
+                }
+            });
+        }
+
+        */
+
 
 
         function myPetUpdate(){
