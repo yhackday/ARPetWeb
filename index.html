@@ -38,12 +38,14 @@
             siteCounter++;
             
             var siteLatLng = new google.maps.LatLng(latitude, longitude);
+            var imageBase = 'https://maps.google.com/mapfiles/kml/shapes/';
             var marker = new google.maps.Marker({
                 position: siteLatLng,
                 map: map,
                 title: "siteCounter",
                 zIndex: siteCounter,
-                html: "siteCounter"
+                html: "siteCounter",
+                icon: imageBase + 'smiley.png',
             });
 
             var contentString = "Some content";
