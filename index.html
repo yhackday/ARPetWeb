@@ -77,7 +77,7 @@
             f3.on("value", function (snap) {
                 var id = snap.val();
                 if (id != null) {
-                    $('#messagesDiv').val($('#messagesDiv').val() + id.status.status);
+                    $('#messagesDiv').val(id.status.status);
                 }
             });
         }
