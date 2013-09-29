@@ -1,0 +1,6 @@
+https://raw.github.com/yhackday/ARPetWeb/master/images/laugh4.gif
+https://raw.github.com/yhackday/ARPetWeb/master/images/mad3.gif
+https://raw.github.com/yhackday/ARPetWeb/master/images/sad2.gif
+https://raw.github.com/yhackday/ARPetWeb/master/images/smiley.png
+https://raw.github.com/yhackday/ARPetWeb/master/images/wink5.gif
+https://raw.github.com/yhackday/ARPetWeb/master/images/pray.gif
