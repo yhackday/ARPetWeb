@@ -32,7 +32,8 @@
         
         //Initializing Firebase 
         firebaseLoop();
-        petUpdate();//myPetUpdate();
+        //petUpdate();
+        //myPetUpdate();
 
         //Changing a value in firebase
         messageListRef.on('child_changed', function(snapshot) {
@@ -70,7 +71,7 @@
         });
         }
 
-        //
+        /*
         function petUpdate() {
           var messageListRef = new Firebase('https://yhackdayusa.firebaseio.com');
           messageListRef.on('value', function(updateSnapshot) {
@@ -101,7 +102,7 @@
                 }
             });
 
-        }
+        }*/
 
 
         function myPetUpdate(){
