@@ -34,18 +34,19 @@
             // Will be called with a messageSnapshot for each message under message_list.
             var latitude = messageSnapshot.child('latitude').val();
             var longitude = messageSnapshot.child('longitude').val();
+            var webMarkerImage = messageSnapshot.child('sourceweb').val();
+
             sites[siteCounter] = new Array("siteCounter", latitude, longitude, siteCounter, "This is siteCounter."); 
             siteCounter++;
             
             var siteLatLng = new google.maps.LatLng(latitude, longitude);
-            var imageBase = 'https://raw.github.com/yhackday/ARPetWeb/master/images/';
             var marker = new google.maps.Marker({
                 position: siteLatLng,
                 map: map,
                 title: "siteCounter",
                 zIndex: siteCounter,
                 html: "siteCounter",
-                icon: imageBase + 'smiley.png',
+                icon: webMarkerImage,
             });
 
             var contentString = "Some content";
