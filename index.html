@@ -15,7 +15,7 @@
   <script>
       $(document).ready(function () { initialize();  });
       function initialize() {
-        var centerMap = new google.maps.LatLng(37.4168811,-122.025);
+        var centerMap = new google.maps.LatLng(37.4168811,-122.045);
 
         var mapOptions = {
             zoom: 13,
@@ -35,17 +35,13 @@
             var latitude = messageSnapshot.child('latitude').val();
             var longitude = messageSnapshot.child('longitude').val();
             var webMarkerImage = messageSnapshot.child('sourceweb').val();
-
-            sites[siteCounter] = new Array("siteCounter", latitude, longitude, siteCounter, "This is siteCounter."); 
-            siteCounter++;
-            
             var siteLatLng = new google.maps.LatLng(latitude, longitude);
             var marker = new google.maps.Marker({
                 position: siteLatLng,
                 map: map,
-                title: "siteCounter",
-                zIndex: siteCounter,
-                html: "siteCounter",
+                //title: "siteCounter",
+                //zIndex: siteCounter,
+                html: "latitude: " + latitude + " longitude: " + longitude,
                 icon: webMarkerImage,
             });
 
@@ -124,8 +120,6 @@ YUI().use('node-base', 'node-event-delegate', function (Y) {
     }, 'a[href="#"]');
 });
 </script>
-
-
 
 </body>
 </html>
