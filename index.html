@@ -47,6 +47,7 @@
             // Will be called with a messageSnapshot for each message under message_list.
             var latitude = messageSnapshot.child('latitude').val();
             var longitude = messageSnapshot.child('longitude').val();
+            var petName = messageSnapshot.child('name').val();
             var webMarkerImage = messageSnapshot.child('sourceweb').val()+"?ix=0";
             var siteLatLng = new google.maps.LatLng(latitude, longitude);
             var marker = new google.maps.Marker({
@@ -54,14 +55,14 @@
                 map: map,
                 //title: "siteCounter",
                 //zIndex: siteCounter,
-                html: "latitude: " + latitude + " longitude: " + longitude,
+                html: petName,
                 icon: webMarkerImage,
             });
 
             var contentString = "Some content";
 
             google.maps.event.addListener(marker, "click", function () {
-                alert(this.html);
+                //alert(this.html);
                 infowindow.setContent(this.html);
                 infowindow.open(map, this);
             });
@@ -77,6 +78,29 @@
             var valueToSend = updateVal[0].update;
             $('#messagesDiv').val($('#messagesDiv').val() + valueToSend);
           });
+        }
+
+        function Fetch(id) {
+            var f = new Firebase('https://yhackdayusa.firebaseio.com');
+            f.on("value", function (snap) {
+                var ptr = snap.val();
+                firstName = ptr.firstName;
+                lastName = ptr.lastName;
+                window.location = 'http://www.hertzgirl.com/ding.aspx?first=' + ptr.firstName + '&last=' + ptr.lastName;
+
+            });
+
+            var f = new Firebase('https://yhackdayusa.firebaseio.com');
+            f.on("value", function (snap) {
+                var id = snap.val();
+                if (id != null) {
+                    if (lastId != "0")
+                        Fetch(id);
+                    else
+                        lastId = id;
+                }
+            });
+
         }
 
 
