@@ -1,12 +1,12 @@
 [ {
-  "sourceweb" : "https://raw.github.com/yhackday/ARPetWeb/master/images/rsz_purple_buffalo.jpg",
+  "sourceweb" : "https://raw.github.com/yhackday/ARPetWeb/master/images/purple_buffalo.jpg",
   "type" : "nisi",
   "state" : "thirsty",
   "latitude" : 37.415802,
   "isActive" : true,
-  "name" : "Marissa's Purple Pet         ..........",
+  "name" : "Marissa's Pet",
   "longitude" : -122.024642,
-  "sourcemobile" : "https://raw.github.com/yhackday/ARPetWeb/master/images/rsz_purple_buffalo.jpg",
+  "sourcemobile" : "https://raw.github.com/yhackday/ARPetWeb/master/images/purple_buffalo.jpg",
   "id" : 0
 }, {
   "sourceweb" : "https://raw.github.com/yhackday/ARPetWeb/master/images/mad3.gif",
@@ -14,7 +14,7 @@
   "state" : "happy",
   "latitude" : 37.416177,
   "isActive" : true,
-  "name" : "Pet of Samantha",
+  "name" : "Pet of Sosa",
   "longitude" : -122.027367,
   "sourcemobile" : "https://raw.github.com/yhackday/ARPetWeb/master/images/m_Cat.jpg",
   "id" : 1
@@ -24,7 +24,7 @@
   "state" : "dying",
   "latitude" : 37.417302,
   "isActive" : false,
-  "name" : "Pet of Johnathan",
+  "name" : "Pet of Hope",
   "longitude" : -122.024277,
   "sourcemobile" : "https://raw.github.com/yhackday/ARPetWeb/master/images/m_dog.jpg",
   "id" : 2
@@ -54,7 +54,7 @@
   "state" : "dying",
   "latitude" : 37.41754,
   "isActive" : false,
-  "name" : "Pet of Rheana",
+  "name" : "Pet of Rhea",
   "longitude" : -122.026938,
   "sourcemobile" : "https://raw.github.com/yhackday/ARPetWeb/master/images/m_elephant.jpg",
   "id" : 5
