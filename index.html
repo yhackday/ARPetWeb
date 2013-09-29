@@ -75,7 +75,9 @@
         function petUpdate() {
            var f3 = new Firebase("https://yhackdayusa.firebaseio.com");
             f3.on("value", function (snap) {
-                var id = snap.val();
+
+                var id = "";
+                id = snap.val();
                 if (id != null) {
                     $('#messagesDiv').val(id.status.status);
                 }
